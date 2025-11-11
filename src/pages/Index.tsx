@@ -1,12 +1,34 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import Hero from "@/components/Hero";
+import AIChat from "@/components/AIChat";
 
 const Index = () => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen">
+      <Hero onSearch={handleSearch} />
+      
+      <div className="py-12 bg-background">
+        <div className="container">
+          <AIChat initialQuery={searchQuery} key={searchQuery} />
+        </div>
       </div>
+
+      <footer className="bg-muted py-8 border-t border-border">
+        <div className="container text-center">
+          <p className="text-sm text-muted-foreground mb-2">
+            © 2024 MK Medical Store - भारत और दुनिया की दवाओं की विश्वसनीय जानकारी
+          </p>
+          <p className="text-xs text-muted-foreground">
+            ⚠️ यह जानकारी केवल शैक्षिक उद्देश्यों के लिए है। कृपया किसी भी दवा लेने से पहले डॉक्टर से परामर्श लें।
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
