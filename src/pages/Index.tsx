@@ -3,13 +3,11 @@ import AIChat from "@/components/AIChat";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Hero />
       
-      <div className="py-12 bg-background">
-        <div className="container">
-          <AIChat />
-        </div>
+      <div className="flex-1 bg-background">
+        <AIChat />
       </div>
 
       <footer className="bg-gradient-to-b from-muted/50 to-muted py-12 border-t border-border mt-12">
@@ -34,7 +32,10 @@ const Index = () => {
                 <svg className="h-6 w-6 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
-                <span className="font-semibold">हमारे YouTube Channel पर जाएं</span>
+                <div className="text-left">
+                  <div className="text-xs opacity-90">हमारे YouTube Channel पर जाएं</div>
+                  <div className="font-bold">MK Pharmacy Hub</div>
+                </div>
               </a>
             </div>
             

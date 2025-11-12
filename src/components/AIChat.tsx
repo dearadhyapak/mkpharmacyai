@@ -70,75 +70,72 @@ const AIChat = ({ initialQuery }: AIChatProps) => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-4">
-      <div className="bg-card rounded-2xl shadow-glow border border-border overflow-hidden transition-all duration-300 hover:shadow-glow">
-        <div className="bg-gradient-primary p-5 flex items-center gap-3">
-          <div className="h-10 w-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-            <Bot className="h-6 w-6 text-primary-foreground" />
-          </div>
-          <div>
-            <h2 className="text-xl font-bold text-primary-foreground">
-              AI Medical Assistant
-            </h2>
-            <p className="text-sm text-primary-foreground/80">हिंदी में पूछें, तुरंत जवाब पाएं</p>
-          </div>
-        </div>
-
-        <ScrollArea ref={scrollRef} className="h-[550px] p-6 bg-gradient-to-b from-muted/20 to-transparent">
+    <div className="flex flex-col h-[calc(100vh-280px)] max-w-5xl mx-auto">
+      <div className="flex-1 flex flex-col bg-background overflow-hidden">
+        <ScrollArea ref={scrollRef} className="flex-1 px-4 py-6">
           {messages.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full text-center p-8">
+            <div className="flex flex-col items-center justify-center h-full text-center p-8 max-w-2xl mx-auto">
               <div className="relative mb-6">
-                <div className="h-20 w-20 rounded-full bg-gradient-primary flex items-center justify-center">
-                  <Bot className="h-10 w-10 text-primary-foreground" />
+                <div className="h-16 w-16 rounded-full bg-gradient-primary flex items-center justify-center shadow-glow">
+                  <Bot className="h-8 w-8 text-primary-foreground" />
                 </div>
-                <div className="absolute -inset-2 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
               </div>
-              <p className="text-2xl font-bold mb-3 bg-gradient-primary bg-clip-text text-transparent">
-                नमस्ते! 🙏
+              <h2 className="text-3xl font-bold mb-3 bg-gradient-primary bg-clip-text text-transparent">
+                MK Medical Assistant
+              </h2>
+              <p className="text-muted-foreground mb-6">
+                दवाओं के बारे में कोई भी सवाल पूछें - मैं आपकी मदद करूंगा
               </p>
-              <p className="text-lg text-foreground mb-2 font-medium">
-                मैं आपका AI मेडिकल असिस्टेंट हूं
-              </p>
-              <p className="text-sm text-muted-foreground max-w-md">
-                कोई भी दवा के बारे में पूछें - उपयोग, साइड इफेक्ट्स, खुराक, सावधानियां या कोई भी सवाल। मैं आपको हिंदी में विस्तार से जानकारी दूंगा।
-              </p>
-              <div className="mt-6 flex flex-wrap justify-center gap-2">
-                <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20">💊 दवा की जानकारी</span>
-                <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20">⚠️ साइड इफेक्ट्स</span>
-                <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20">📋 खुराक</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full mt-4">
+                <button className="p-4 text-left bg-card hover:bg-accent border border-border rounded-xl transition-colors">
+                  <div className="text-sm font-medium mb-1">💊 दवा की जानकारी</div>
+                  <div className="text-xs text-muted-foreground">किसी भी दवा के बारे में पूछें</div>
+                </button>
+                <button className="p-4 text-left bg-card hover:bg-accent border border-border rounded-xl transition-colors">
+                  <div className="text-sm font-medium mb-1">⚠️ साइड इफेक्ट्स</div>
+                  <div className="text-xs text-muted-foreground">दवा के दुष्प्रभाव जानें</div>
+                </button>
+                <button className="p-4 text-left bg-card hover:bg-accent border border-border rounded-xl transition-colors">
+                  <div className="text-sm font-medium mb-1">📋 खुराक की जानकारी</div>
+                  <div className="text-xs text-muted-foreground">सही मात्रा और समय</div>
+                </button>
+                <button className="p-4 text-left bg-card hover:bg-accent border border-border rounded-xl transition-colors">
+                  <div className="text-sm font-medium mb-1">🔍 विकल्प खोजें</div>
+                  <div className="text-xs text-muted-foreground">दवा के विकल्प देखें</div>
+                </button>
               </div>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-6 max-w-3xl mx-auto">
               {messages.map((message, index) => (
                 <div
                   key={index}
-                  className={`flex gap-3 ${
+                  className={`flex gap-4 ${
                     message.role === "user" ? "justify-end" : "justify-start"
                   }`}
                 >
                   {message.role === "assistant" && (
-                    <div className="flex-shrink-0">
-                      <div className="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center shadow-soft">
-                        <Bot className="h-6 w-6 text-primary-foreground" />
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="h-8 w-8 rounded-full bg-gradient-primary flex items-center justify-center">
+                        <Bot className="h-5 w-5 text-primary-foreground" />
                       </div>
                     </div>
                   )}
                   
                   <div
-                    className={`max-w-[75%] rounded-2xl px-5 py-3 shadow-soft ${
+                    className={`max-w-[85%] ${
                       message.role === "user"
-                        ? "bg-gradient-primary text-primary-foreground"
-                        : "bg-card border border-border text-foreground"
+                        ? "bg-primary text-primary-foreground rounded-3xl px-5 py-3"
+                        : "text-foreground"
                     }`}
                   >
-                    <p className="whitespace-pre-wrap leading-relaxed">{message.content}</p>
+                    <p className="whitespace-pre-wrap leading-relaxed text-[15px]">{message.content}</p>
                   </div>
 
                   {message.role === "user" && (
-                    <div className="flex-shrink-0">
-                      <div className="h-10 w-10 rounded-full bg-gradient-secondary flex items-center justify-center shadow-soft">
-                        <User className="h-6 w-6 text-secondary-foreground" />
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center">
+                        <User className="h-5 w-5 text-foreground" />
                       </div>
                     </div>
                   )}
@@ -146,15 +143,14 @@ const AIChat = ({ initialQuery }: AIChatProps) => {
               ))}
               
               {isLoading && (
-                <div className="flex gap-3 justify-start">
-                  <div className="flex-shrink-0">
-                    <div className="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center shadow-soft">
-                      <Bot className="h-6 w-6 text-primary-foreground" />
+                <div className="flex gap-4 justify-start max-w-3xl mx-auto">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="h-8 w-8 rounded-full bg-gradient-primary flex items-center justify-center">
+                      <Bot className="h-5 w-5 text-primary-foreground" />
                     </div>
                   </div>
-                  <div className="bg-card border border-border rounded-2xl px-5 py-3 flex items-center gap-3 shadow-soft">
+                  <div className="flex items-center gap-2">
                     <Loader2 className="h-5 w-5 animate-spin text-primary" />
-                    <span className="text-sm font-medium">जवाब तैयार हो रहा है...</span>
                   </div>
                 </div>
               )}
@@ -162,25 +158,32 @@ const AIChat = ({ initialQuery }: AIChatProps) => {
           )}
         </ScrollArea>
 
-        <div className="p-5 border-t border-border bg-gradient-to-b from-muted/10 to-muted/30">
-          <div className="flex gap-3">
-            <Input
-              type="text"
-              placeholder="दवा के बारे में पूछें... (उदाहरण: पैरासिटामोल के साइड इफेक्ट्स)"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyPress={(e) => e.key === "Enter" && !isLoading && handleSend()}
-              disabled={isLoading}
-              className="flex-1 h-12 text-base border-border focus:border-primary transition-colors"
-            />
-            <Button
-              onClick={() => handleSend()}
-              disabled={isLoading || !input.trim()}
-              className="h-12 px-6 bg-gradient-primary hover:shadow-glow transition-all"
-            >
-              <Send className="h-5 w-5 mr-2" />
-              भेजें
-            </Button>
+        <div className="border-t border-border bg-background p-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="relative flex items-center gap-3">
+              <div className="flex-1 relative">
+                <Input
+                  type="text"
+                  placeholder="Message MK Medical Assistant"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyPress={(e) => e.key === "Enter" && !isLoading && handleSend()}
+                  disabled={isLoading}
+                  className="w-full h-12 pr-12 rounded-3xl border-border bg-muted/50 focus:bg-background transition-colors"
+                />
+                <Button
+                  onClick={() => handleSend()}
+                  disabled={isLoading || !input.trim()}
+                  size="icon"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-primary hover:bg-primary/90"
+                >
+                  <Send className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+            <p className="text-xs text-muted-foreground text-center mt-2">
+              यह जानकारी केवल शैक्षिक उद्देश्यों के लिए है। कृपया किसी भी दवा लेने से पहले डॉक्टर से परामर्श लें।
+            </p>
           </div>
         </div>
       </div>
