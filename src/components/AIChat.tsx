@@ -70,25 +70,43 @@ const AIChat = ({ initialQuery }: AIChatProps) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      <div className="bg-card rounded-xl shadow-medium border border-border overflow-hidden">
-        <div className="bg-gradient-primary p-4 flex items-center gap-3">
-          <Bot className="h-6 w-6 text-primary-foreground" />
-          <h2 className="text-xl font-semibold text-primary-foreground">
-            AI Medical Assistant (हिंदी)
-          </h2>
+    <div className="max-w-5xl mx-auto p-4">
+      <div className="bg-card rounded-2xl shadow-glow border border-border overflow-hidden transition-all duration-300 hover:shadow-glow">
+        <div className="bg-gradient-primary p-5 flex items-center gap-3">
+          <div className="h-10 w-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+            <Bot className="h-6 w-6 text-primary-foreground" />
+          </div>
+          <div>
+            <h2 className="text-xl font-bold text-primary-foreground">
+              AI Medical Assistant
+            </h2>
+            <p className="text-sm text-primary-foreground/80">हिंदी में पूछें, तुरंत जवाब पाएं</p>
+          </div>
         </div>
 
-        <ScrollArea ref={scrollRef} className="h-[500px] p-4">
+        <ScrollArea ref={scrollRef} className="h-[550px] p-6 bg-gradient-to-b from-muted/20 to-transparent">
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center p-8">
-              <Bot className="h-16 w-16 text-muted-foreground mb-4" />
-              <p className="text-lg text-muted-foreground mb-2">
-                नमस्ते! मैं आपका AI मेडिकल असिस्टेंट हूं
+              <div className="relative mb-6">
+                <div className="h-20 w-20 rounded-full bg-gradient-primary flex items-center justify-center">
+                  <Bot className="h-10 w-10 text-primary-foreground" />
+                </div>
+                <div className="absolute -inset-2 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
+              </div>
+              <p className="text-2xl font-bold mb-3 bg-gradient-primary bg-clip-text text-transparent">
+                नमस्ते! 🙏
               </p>
-              <p className="text-sm text-muted-foreground">
-                कोई भी दवा के बारे में पूछें और मैं आपको हिंदी में जानकारी दूंगा
+              <p className="text-lg text-foreground mb-2 font-medium">
+                मैं आपका AI मेडिकल असिस्टेंट हूं
               </p>
+              <p className="text-sm text-muted-foreground max-w-md">
+                कोई भी दवा के बारे में पूछें - उपयोग, साइड इफेक्ट्स, खुराक, सावधानियां या कोई भी सवाल। मैं आपको हिंदी में विस्तार से जानकारी दूंगा।
+              </p>
+              <div className="mt-6 flex flex-wrap justify-center gap-2">
+                <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20">💊 दवा की जानकारी</span>
+                <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20">⚠️ साइड इफेक्ट्स</span>
+                <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20">📋 खुराक</span>
+              </div>
             </div>
           ) : (
             <div className="space-y-4">
@@ -101,26 +119,26 @@ const AIChat = ({ initialQuery }: AIChatProps) => {
                 >
                   {message.role === "assistant" && (
                     <div className="flex-shrink-0">
-                      <div className="h-8 w-8 rounded-full bg-gradient-primary flex items-center justify-center">
-                        <Bot className="h-5 w-5 text-primary-foreground" />
+                      <div className="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center shadow-soft">
+                        <Bot className="h-6 w-6 text-primary-foreground" />
                       </div>
                     </div>
                   )}
                   
                   <div
-                    className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+                    className={`max-w-[75%] rounded-2xl px-5 py-3 shadow-soft ${
                       message.role === "user"
                         ? "bg-gradient-primary text-primary-foreground"
-                        : "bg-muted text-foreground"
+                        : "bg-card border border-border text-foreground"
                     }`}
                   >
-                    <p className="whitespace-pre-wrap">{message.content}</p>
+                    <p className="whitespace-pre-wrap leading-relaxed">{message.content}</p>
                   </div>
 
                   {message.role === "user" && (
                     <div className="flex-shrink-0">
-                      <div className="h-8 w-8 rounded-full bg-secondary flex items-center justify-center">
-                        <User className="h-5 w-5 text-secondary-foreground" />
+                      <div className="h-10 w-10 rounded-full bg-gradient-secondary flex items-center justify-center shadow-soft">
+                        <User className="h-6 w-6 text-secondary-foreground" />
                       </div>
                     </div>
                   )}
@@ -130,13 +148,13 @@ const AIChat = ({ initialQuery }: AIChatProps) => {
               {isLoading && (
                 <div className="flex gap-3 justify-start">
                   <div className="flex-shrink-0">
-                    <div className="h-8 w-8 rounded-full bg-gradient-primary flex items-center justify-center">
-                      <Bot className="h-5 w-5 text-primary-foreground" />
+                    <div className="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center shadow-soft">
+                      <Bot className="h-6 w-6 text-primary-foreground" />
                     </div>
                   </div>
-                  <div className="bg-muted rounded-2xl px-4 py-3 flex items-center gap-2">
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                    <span className="text-sm">जवाब तैयार हो रहा है...</span>
+                  <div className="bg-card border border-border rounded-2xl px-5 py-3 flex items-center gap-3 shadow-soft">
+                    <Loader2 className="h-5 w-5 animate-spin text-primary" />
+                    <span className="text-sm font-medium">जवाब तैयार हो रहा है...</span>
                   </div>
                 </div>
               )}
@@ -144,24 +162,24 @@ const AIChat = ({ initialQuery }: AIChatProps) => {
           )}
         </ScrollArea>
 
-        <div className="p-4 border-t border-border bg-muted/30">
-          <div className="flex gap-2">
+        <div className="p-5 border-t border-border bg-gradient-to-b from-muted/10 to-muted/30">
+          <div className="flex gap-3">
             <Input
               type="text"
-              placeholder="दवा के बारे में पूछें..."
+              placeholder="दवा के बारे में पूछें... (उदाहरण: पैरासिटामोल के साइड इफेक्ट्स)"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && !isLoading && handleSend()}
               disabled={isLoading}
-              className="flex-1"
+              className="flex-1 h-12 text-base border-border focus:border-primary transition-colors"
             />
             <Button
               onClick={() => handleSend()}
               disabled={isLoading || !input.trim()}
-              size="icon"
-              className="bg-gradient-primary hover:shadow-glow"
+              className="h-12 px-6 bg-gradient-primary hover:shadow-glow transition-all"
             >
-              <Send className="h-5 w-5" />
+              <Send className="h-5 w-5 mr-2" />
+              भेजें
             </Button>
           </div>
         </div>
