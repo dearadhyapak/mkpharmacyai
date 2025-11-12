@@ -76,25 +76,6 @@ const Hero = ({ onSearch }: HeroProps) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom duration-700 delay-500">
-          <div className="p-6 bg-card/60 backdrop-blur-sm rounded-xl shadow-soft border border-border hover:shadow-medium transition-all duration-300">
-            <div className="text-4xl mb-3">💊</div>
-            <h3 className="text-lg font-semibold mb-2">असली दवाइयों की फोटो</h3>
-            <p className="text-sm text-muted-foreground">भारत और विश्व की दवाओं की सही तस्वीरें</p>
-          </div>
-
-          <div className="p-6 bg-card/60 backdrop-blur-sm rounded-xl shadow-soft border border-border hover:shadow-medium transition-all duration-300">
-            <div className="text-4xl mb-3">🤖</div>
-            <h3 className="text-lg font-semibold mb-2">हिंदी AI असिस्टेंट</h3>
-            <p className="text-sm text-muted-foreground">सरल हिंदी में पूरी जानकारी</p>
-          </div>
-
-          <div className="p-6 bg-card/60 backdrop-blur-sm rounded-xl shadow-soft border border-border hover:shadow-medium transition-all duration-300">
-            <div className="text-4xl mb-3">📚</div>
-            <h3 className="text-lg font-semibold mb-2">पूरी जानकारी</h3>
-            <p className="text-sm text-muted-foreground">उपयोग, साइड इफेक्ट्स और सावधानियां</p>
-          </div>
-        </div>
       </div>
     </div>
   );
