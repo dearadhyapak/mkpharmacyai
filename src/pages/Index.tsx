@@ -1,21 +1,14 @@
-import { useState } from "react";
 import Hero from "@/components/Hero";
 import AIChat from "@/components/AIChat";
 
 const Index = () => {
-  const [searchQuery, setSearchQuery] = useState<string>("");
-
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-  };
-
   return (
     <div className="min-h-screen">
-      <Hero onSearch={handleSearch} />
+      <Hero />
       
       <div className="py-12 bg-background">
         <div className="container">
-          <AIChat initialQuery={searchQuery} key={searchQuery} />
+          <AIChat />
         </div>
       </div>
 
