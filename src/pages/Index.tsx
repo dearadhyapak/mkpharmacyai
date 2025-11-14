@@ -16,7 +16,7 @@ const Index = () => {
             <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
               <div className="text-center md:text-left">
                 <h3 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
-                  MK Medical Store
+                  MK Pharmacy Hub
                 </h3>
                 <p className="text-sm text-muted-foreground">
                   आपके स्वास्थ्य की विश्वसनीय जानकारी
@@ -41,7 +41,7 @@ const Index = () => {
             
             <div className="text-center space-y-3 pt-6 border-t border-border">
               <p className="text-sm text-muted-foreground">
-                © 2024 MK Medical Store - भारत और दुनिया की दवाओं की विश्वसनीय जानकारी
+                © 2024 MK Pharmacy Hub - भारत और दुनिया की दवाओं की विश्वसनीय जानकारी
               </p>
               <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground bg-destructive/10 border border-destructive/20 rounded-lg px-4 py-2 max-w-2xl mx-auto">
                 <span className="text-lg">⚠️</span>

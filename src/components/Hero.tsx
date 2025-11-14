@@ -1,5 +1,5 @@
 import heroImage from "@/assets/hero-medical.jpg";
-import mkLogo from "@/assets/mk-logo.png";
+import mkLogo from "@/assets/mk-pharmacy-logo.jpg";
 
 const Hero = () => {
 
@@ -19,7 +19,7 @@ const Hero = () => {
         </div>
         
         <h1 className="text-4xl md:text-6xl font-bold mb-3 bg-gradient-primary bg-clip-text text-transparent animate-in fade-in slide-in-from-top duration-700 delay-100">
-          MK Medical Store
+          MK Pharmacy Hub
         </h1>
         
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto animate-in fade-in slide-in-from-top duration-700 delay-200">
