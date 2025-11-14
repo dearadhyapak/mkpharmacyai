@@ -83,27 +83,9 @@ const AIChat = ({ initialQuery }: AIChatProps) => {
               <h2 className="text-3xl font-bold mb-3 bg-gradient-primary bg-clip-text text-transparent">
                 MK Medical Assistant
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-muted-foreground text-lg">
                 दवाओं के बारे में कोई भी सवाल पूछें - मैं आपकी मदद करूंगा
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full mt-4">
-                <button className="p-4 text-left bg-card hover:bg-accent border border-border rounded-xl transition-colors">
-                  <div className="text-sm font-medium mb-1">💊 दवा की जानकारी</div>
-                  <div className="text-xs text-muted-foreground">किसी भी दवा के बारे में पूछें</div>
-                </button>
-                <button className="p-4 text-left bg-card hover:bg-accent border border-border rounded-xl transition-colors">
-                  <div className="text-sm font-medium mb-1">⚠️ साइड इफेक्ट्स</div>
-                  <div className="text-xs text-muted-foreground">दवा के दुष्प्रभाव जानें</div>
-                </button>
-                <button className="p-4 text-left bg-card hover:bg-accent border border-border rounded-xl transition-colors">
-                  <div className="text-sm font-medium mb-1">📋 खुराक की जानकारी</div>
-                  <div className="text-xs text-muted-foreground">सही मात्रा और समय</div>
-                </button>
-                <button className="p-4 text-left bg-card hover:bg-accent border border-border rounded-xl transition-colors">
-                  <div className="text-sm font-medium mb-1">🔍 विकल्प खोजें</div>
-                  <div className="text-xs text-muted-foreground">दवा के विकल्प देखें</div>
-                </button>
-              </div>
             </div>
           ) : (
             <div className="space-y-6 max-w-3xl mx-auto">
