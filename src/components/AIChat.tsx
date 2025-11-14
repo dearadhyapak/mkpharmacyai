@@ -70,38 +70,42 @@ const AIChat = ({ initialQuery }: AIChatProps) => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-background">
+    <div className="flex flex-col h-[calc(100vh-64px)] bg-background">
       <div className="flex-1 flex flex-col overflow-hidden">
         <ScrollArea ref={scrollRef} className="flex-1 px-4 py-8">
           {messages.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
-              <div className="mb-6">
-                <div className="h-16 w-16 rounded-2xl bg-gradient-primary flex items-center justify-center mx-auto shadow-lg">
-                  <Bot className="h-9 w-9 text-primary-foreground" />
+            <div className="flex flex-col items-center justify-center h-full text-center px-4 max-w-4xl mx-auto">
+              <div className="mb-8">
+                <div className="h-20 w-20 rounded-2xl bg-gradient-primary flex items-center justify-center mx-auto shadow-lg">
+                  <Bot className="h-10 w-10 text-primary-foreground" />
                 </div>
               </div>
-              <h1 className="text-3xl md:text-4xl font-semibold mb-3 text-foreground">
-                MK Medical Assistant
+              <h1 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">
+                कैसे मदद कर सकता हूँ?
               </h1>
-              <p className="text-muted-foreground text-base md:text-lg mb-8">
-                दवाओं के बारे में कोई भी सवाल पूछें
+              <p className="text-muted-foreground text-base md:text-lg mb-10 max-w-2xl">
+                मैं आपकी दवाओं से संबंधित सभी सवालों का जवाब देने के लिए यहाँ हूँ
               </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 w-full max-w-2xl">
-                <div className="p-4 bg-muted/40 hover:bg-muted/60 rounded-xl transition-colors cursor-pointer border border-border/50">
-                  <div className="text-2xl mb-2">💊</div>
-                  <div className="text-sm font-medium">दवा की जानकारी</div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-3xl">
+                <div className="group p-6 bg-gradient-to-br from-muted/50 to-muted/30 hover:from-muted/70 hover:to-muted/50 rounded-2xl transition-all cursor-pointer border border-border/50 hover:border-primary/30 hover:shadow-soft">
+                  <div className="text-3xl mb-3">💊</div>
+                  <div className="text-base font-semibold mb-2">दवा की पूरी जानकारी</div>
+                  <div className="text-sm text-muted-foreground">उपयोग, खुराक और सावधानियां</div>
                 </div>
-                <div className="p-4 bg-muted/40 hover:bg-muted/60 rounded-xl transition-colors cursor-pointer border border-border/50">
-                  <div className="text-2xl mb-2">⚠️</div>
-                  <div className="text-sm font-medium">साइड इफेक्ट्स</div>
+                <div className="group p-6 bg-gradient-to-br from-muted/50 to-muted/30 hover:from-muted/70 hover:to-muted/50 rounded-2xl transition-all cursor-pointer border border-border/50 hover:border-primary/30 hover:shadow-soft">
+                  <div className="text-3xl mb-3">⚠️</div>
+                  <div className="text-base font-semibold mb-2">साइड इफेक्ट्स</div>
+                  <div className="text-sm text-muted-foreground">दुष्प्रभाव और सावधानियां</div>
                 </div>
-                <div className="p-4 bg-muted/40 hover:bg-muted/60 rounded-xl transition-colors cursor-pointer border border-border/50">
-                  <div className="text-2xl mb-2">📋</div>
-                  <div className="text-sm font-medium">खुराक जानकारी</div>
+                <div className="group p-6 bg-gradient-to-br from-muted/50 to-muted/30 hover:from-muted/70 hover:to-muted/50 rounded-2xl transition-all cursor-pointer border border-border/50 hover:border-primary/30 hover:shadow-soft">
+                  <div className="text-3xl mb-3">📋</div>
+                  <div className="text-base font-semibold mb-2">खुराक और समय</div>
+                  <div className="text-sm text-muted-foreground">सही मात्रा और उपयोग का तरीका</div>
                 </div>
-                <div className="p-4 bg-muted/40 hover:bg-muted/60 rounded-xl transition-colors cursor-pointer border border-border/50">
-                  <div className="text-2xl mb-2">🔍</div>
-                  <div className="text-sm font-medium">विकल्प खोजें</div>
+                <div className="group p-6 bg-gradient-to-br from-muted/50 to-muted/30 hover:from-muted/70 hover:to-muted/50 rounded-2xl transition-all cursor-pointer border border-border/50 hover:border-primary/30 hover:shadow-soft">
+                  <div className="text-3xl mb-3">🔍</div>
+                  <div className="text-base font-semibold mb-2">विकल्प खोजें</div>
+                  <div className="text-sm text-muted-foreground">दवा के सस्ते और प्रभावी विकल्प</div>
                 </div>
               </div>
             </div>

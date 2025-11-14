@@ -1,9 +1,11 @@
 import Hero from "@/components/Hero";
 import AIChat from "@/components/AIChat";
+import Header from "@/components/Header";
 
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <Header />
       <AIChat />
 
       <footer className="bg-gradient-to-b from-muted/50 to-muted py-12 border-t border-border mt-12">
