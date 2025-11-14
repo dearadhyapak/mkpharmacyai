@@ -25,22 +25,6 @@ const Hero = () => {
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto animate-in fade-in slide-in-from-top duration-700 delay-200">
           भारत और दुनिया की दवाओं की सही जानकारी, AI की मदद से
         </p>
-        
-        <div className="mt-6 flex flex-wrap justify-center gap-3 animate-in fade-in slide-in-from-bottom duration-700 delay-300">
-          <div className="flex items-center gap-2 px-4 py-2 bg-card/60 backdrop-blur-sm rounded-full border border-border shadow-soft">
-            <span className="text-2xl">🤖</span>
-            <span className="text-sm font-medium">AI Assistant</span>
-          </div>
-          <div className="flex items-center gap-2 px-4 py-2 bg-card/60 backdrop-blur-sm rounded-full border border-border shadow-soft">
-            <span className="text-2xl">🇮🇳</span>
-            <span className="text-sm font-medium">हिंदी Support</span>
-          </div>
-          <div className="flex items-center gap-2 px-4 py-2 bg-card/60 backdrop-blur-sm rounded-full border border-border shadow-soft">
-            <span className="text-2xl">⚡</span>
-            <span className="text-sm font-medium">Instant Answers</span>
-          </div>
-        </div>
-
       </div>
     </div>
   );
