@@ -4,11 +4,7 @@ import AIChat from "@/components/AIChat";
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <Hero />
-      
-      <div className="flex-1 bg-background">
-        <AIChat />
-      </div>
+      <AIChat />
 
       <footer className="bg-gradient-to-b from-muted/50 to-muted py-12 border-t border-border mt-12">
         <div className="container">

@@ -70,69 +70,65 @@ const AIChat = ({ initialQuery }: AIChatProps) => {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-280px)] max-w-5xl mx-auto">
-      <div className="flex-1 flex flex-col bg-background overflow-hidden">
-        <ScrollArea ref={scrollRef} className="flex-1 px-4 py-6">
+    <div className="flex flex-col h-screen bg-background">
+      <div className="flex-1 flex flex-col overflow-hidden">
+        <ScrollArea ref={scrollRef} className="flex-1 px-4 py-8">
           {messages.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full text-center p-8 max-w-3xl mx-auto">
-              <div className="relative mb-8 animate-in fade-in duration-700">
-                <div className="absolute -inset-4 bg-gradient-primary opacity-20 rounded-full blur-2xl animate-pulse"></div>
-                <div className="relative h-24 w-24 rounded-3xl bg-gradient-primary flex items-center justify-center shadow-glow">
-                  <Bot className="h-12 w-12 text-primary-foreground" />
+            <div className="flex flex-col items-center justify-center h-full text-center px-4 max-w-3xl mx-auto">
+              <div className="mb-6">
+                <div className="h-16 w-16 rounded-2xl bg-gradient-primary flex items-center justify-center mx-auto shadow-lg">
+                  <Bot className="h-9 w-9 text-primary-foreground" />
                 </div>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent animate-in fade-in duration-700 delay-100">
+              <h1 className="text-3xl md:text-4xl font-semibold mb-3 text-foreground">
                 MK Medical Assistant
-              </h2>
-              <p className="text-muted-foreground text-lg md:text-xl mb-8 max-w-xl animate-in fade-in duration-700 delay-200">
-                दवाओं के बारे में कोई भी सवाल पूछें - मैं आपकी मदद करूंगा
+              </h1>
+              <p className="text-muted-foreground text-base md:text-lg mb-8">
+                दवाओं के बारे में कोई भी सवाल पूछें
               </p>
-              <div className="flex flex-wrap justify-center gap-2 animate-in fade-in duration-700 delay-300">
-                <div className="px-4 py-2 bg-accent/50 rounded-full text-sm font-medium text-accent-foreground">
-                  💊 दवा की जानकारी
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 w-full max-w-2xl">
+                <div className="p-4 bg-muted/40 hover:bg-muted/60 rounded-xl transition-colors cursor-pointer border border-border/50">
+                  <div className="text-2xl mb-2">💊</div>
+                  <div className="text-sm font-medium">दवा की जानकारी</div>
                 </div>
-                <div className="px-4 py-2 bg-accent/50 rounded-full text-sm font-medium text-accent-foreground">
-                  ⚠️ साइड इफेक्ट्स
+                <div className="p-4 bg-muted/40 hover:bg-muted/60 rounded-xl transition-colors cursor-pointer border border-border/50">
+                  <div className="text-2xl mb-2">⚠️</div>
+                  <div className="text-sm font-medium">साइड इफेक्ट्स</div>
                 </div>
-                <div className="px-4 py-2 bg-accent/50 rounded-full text-sm font-medium text-accent-foreground">
-                  📋 खुराक की जानकारी
+                <div className="p-4 bg-muted/40 hover:bg-muted/60 rounded-xl transition-colors cursor-pointer border border-border/50">
+                  <div className="text-2xl mb-2">📋</div>
+                  <div className="text-sm font-medium">खुराक जानकारी</div>
                 </div>
-                <div className="px-4 py-2 bg-accent/50 rounded-full text-sm font-medium text-accent-foreground">
-                  🔍 विकल्प खोजें
+                <div className="p-4 bg-muted/40 hover:bg-muted/60 rounded-xl transition-colors cursor-pointer border border-border/50">
+                  <div className="text-2xl mb-2">🔍</div>
+                  <div className="text-sm font-medium">विकल्प खोजें</div>
                 </div>
               </div>
             </div>
           ) : (
-            <div className="space-y-6 max-w-3xl mx-auto">
+            <div className="max-w-3xl mx-auto w-full space-y-8 pb-8">
               {messages.map((message, index) => (
-                <div
-                  key={index}
-                  className={`flex gap-4 ${
-                    message.role === "user" ? "justify-end" : "justify-start"
-                  }`}
-                >
-                  {message.role === "assistant" && (
-                    <div className="flex-shrink-0 mt-1">
-                      <div className="h-8 w-8 rounded-full bg-gradient-primary flex items-center justify-center">
-                        <Bot className="h-5 w-5 text-primary-foreground" />
+                <div key={index} className="group">
+                  {message.role === "user" ? (
+                    <div className="flex gap-4 items-start">
+                      <div className="flex-shrink-0">
+                        <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+                          <User className="h-5 w-5 text-primary-foreground" />
+                        </div>
+                      </div>
+                      <div className="flex-1 pt-1">
+                        <p className="text-foreground leading-relaxed">{message.content}</p>
                       </div>
                     </div>
-                  )}
-                  
-                  <div
-                    className={`max-w-[85%] ${
-                      message.role === "user"
-                        ? "bg-primary text-primary-foreground rounded-3xl px-6 py-4 shadow-soft"
-                        : "bg-muted/50 text-foreground rounded-3xl px-6 py-4"
-                    }`}
-                  >
-                    <p className="whitespace-pre-wrap leading-relaxed text-[15px]">{message.content}</p>
-                  </div>
-
-                  {message.role === "user" && (
-                    <div className="flex-shrink-0 mt-1">
-                      <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center">
-                        <User className="h-5 w-5 text-foreground" />
+                  ) : (
+                    <div className="flex gap-4 items-start bg-muted/30 -mx-4 px-4 py-6 rounded-lg">
+                      <div className="flex-shrink-0">
+                        <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center">
+                          <Bot className="h-5 w-5 text-primary-foreground" />
+                        </div>
+                      </div>
+                      <div className="flex-1 pt-1">
+                        <p className="text-foreground leading-relaxed whitespace-pre-wrap">{message.content}</p>
                       </div>
                     </div>
                   )}
@@ -140,14 +136,20 @@ const AIChat = ({ initialQuery }: AIChatProps) => {
               ))}
               
               {isLoading && (
-                <div className="flex gap-4 justify-start max-w-3xl mx-auto">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-8 w-8 rounded-full bg-gradient-primary flex items-center justify-center">
-                      <Bot className="h-5 w-5 text-primary-foreground" />
+                <div className="max-w-3xl mx-auto w-full">
+                  <div className="flex gap-4 items-start bg-muted/30 -mx-4 px-4 py-6 rounded-lg">
+                    <div className="flex-shrink-0">
+                      <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center">
+                        <Bot className="h-5 w-5 text-primary-foreground" />
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Loader2 className="h-5 w-5 animate-spin text-primary" />
+                    <div className="flex-1 pt-2">
+                      <div className="flex gap-1">
+                        <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></div>
+                        <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: "150ms" }}></div>
+                        <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: "300ms" }}></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}
@@ -155,30 +157,28 @@ const AIChat = ({ initialQuery }: AIChatProps) => {
           )}
         </ScrollArea>
 
-        <div className="border-t border-border bg-background p-4">
+        <div className="border-t border-border bg-background/80 backdrop-blur-sm p-4">
           <div className="max-w-3xl mx-auto">
-            <div className="relative flex items-center gap-3">
-              <div className="flex-1 relative">
-                <Input
-                  type="text"
-                  placeholder="दवाओं के बारे में पूछें..."
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyPress={(e) => e.key === "Enter" && !isLoading && handleSend()}
-                  disabled={isLoading}
-                  className="w-full h-14 pr-14 rounded-3xl border-2 border-border bg-background focus:border-primary transition-all shadow-soft text-base"
-                />
-                <Button
-                  onClick={() => handleSend()}
-                  disabled={isLoading || !input.trim()}
-                  size="icon"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-gradient-primary hover:shadow-glow transition-all disabled:opacity-50"
-                >
-                  <Send className="h-5 w-5" />
-                </Button>
-              </div>
+            <div className="flex items-end gap-3">
+              <Input
+                type="text"
+                placeholder="मुझसे कुछ भी पूछें..."
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyPress={(e) => e.key === "Enter" && !isLoading && handleSend()}
+                disabled={isLoading}
+                className="flex-1 min-h-[52px] max-h-32 rounded-2xl border-border bg-muted/50 focus:bg-background transition-colors resize-none px-4 py-3"
+              />
+              <Button
+                onClick={() => handleSend()}
+                disabled={isLoading || !input.trim()}
+                size="icon"
+                className="h-[52px] w-[52px] rounded-2xl bg-gradient-primary hover:opacity-90 transition-opacity disabled:opacity-40"
+              >
+                <Send className="h-5 w-5" />
+              </Button>
             </div>
-            <p className="text-xs text-muted-foreground text-center mt-2">
+            <p className="text-xs text-muted-foreground text-center mt-3">
               यह जानकारी केवल शैक्षिक उद्देश्यों के लिए है। कृपया किसी भी दवा लेने से पहले डॉक्टर से परामर्श लें।
             </p>
           </div>
